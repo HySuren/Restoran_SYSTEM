@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    ''
+    'ClientAPI',
 ]
 
 MIDDLEWARE = [
@@ -52,10 +52,18 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'DjangoService.urls'
 
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'ClientAPI', 'templates')
+STATIC_URL = "static/"
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,'ClientAPI','templates', "static"),
+]
+
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATES_DIR[0]],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,11 +84,14 @@ WSGI_APPLICATION = 'DjangoService.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'RestoranDB',
+        'USER': 'postgres',
+        'PASSWORD': 'd040715e',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
