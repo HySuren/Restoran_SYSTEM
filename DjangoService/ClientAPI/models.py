@@ -1,8 +1,14 @@
-from django.db import models
 from typing import Text
 import datetime
+from django.db import models
+from django.core.files.base import ContentFile
+from openpyxl import Workbook
+from django.utils.timezone import localtime
+from openpyxl.styles import PatternFill
+from io import BytesIO
 
 
+offset = datetime.timezone(datetime.timedelta(hours=6))
 
 class Category(models.Model):
     category_id: int = models.AutoField(primary_key=True)
@@ -27,13 +33,13 @@ class Goods(models.Model):
         db_table = 'Goods'
 
     def __str__(self):
-        return f'{self.title}\n{self.description}'
+        return f'{self.title}............. {self.price_rub}руб'
 
 
 class Order(models.Model):
     order_id: int = models.AutoField(primary_key=True)
-    goods = models.ManyToManyField('Goods')
-    datetimes: datetime = models.DateTimeField('datetimes', default=datetime.datetime.now())
+    goods = models.TextField('goods')
+    datetimes: datetime = models.DateTimeField('datetimes', default=datetime.datetime.now(offset))
     sum_price: int = models.FloatField('sum_price', null=False, default=0.00)
     is_working: bool = models.BooleanField('is_working', default=False)  # This trigger if the value of the object -
     # is true,then the order will be displayed in the state 'At work'
@@ -44,3 +50,63 @@ class Order(models.Model):
     # is true, the order will not be displayed, and will be transferred to the archive
     class Meta:
         db_table = 'Order'
+
+class Files(models.Model):
+    file = models.FileField(upload_to='orders_files/', null=True, blank=True)
+
+    class Meta:
+        db_table = 'Files'
+
+    def __str__(self):
+        return f'File {self.id}'
+
+    @staticmethod
+    def create_excel_file(orders):
+        # Создаем Excel-файл и сохраняем его в объект BytesIO
+        content_file = BytesIO()
+        wb = Workbook()
+        ws = wb.active
+
+        # Увеличиваем размер столбцов
+        ws.column_dimensions['A'].width = 15
+        ws.column_dimensions['B'].width = 25
+        ws.column_dimensions['C'].width = 50
+        ws.column_dimensions['D'].width = 15
+
+        # Заголовки столбцов
+        ws.append(['Номер заказа', 'Дата создания и время', 'Перечень', 'Итоговая сумма'])
+
+        for order in orders:
+            # Создаем новую строку в каждой итерации цикла
+            row = [
+                order.order_id,
+                localtime(order.datetimes).replace(tzinfo=None),
+                '\n'.join(order.goods.split('\n')),
+                order.sum_price
+            ]
+            ws.append(row)
+
+        # Добавляем формулу для суммирования колонки "Итоговая сумма"
+        last_row = len(orders) + 2  # +2 для учета заголовка и формулы
+        ws.cell(row=last_row, column=3, value=f'Итог:')
+        ws.cell(row=last_row, column=4, value=f'=SUM(D2:D{last_row - 1})')
+
+        # Выделяем только последнюю ячейку "Итоговая сумма" желтым цветом
+        last_cell = ws.cell(row=last_row, column=4)
+        last_cell.fill = PatternFill(start_color='FFFF00', end_color='FFFF00', fill_type='solid')
+
+        last_cell_two = ws.cell(row=last_row, column=3)
+        last_cell_two.fill = PatternFill(start_color='FFFF00', end_color='FFFF00', fill_type='solid')
+
+        # Выводим содержимое orders и content_file для отладки
+        print("Orders:", orders)
+        print("Content File:", content_file.getvalue())
+
+        # Сохраняем файл в объект BytesIO
+        wb.save(content_file)
+
+        # Сохраняем файл в модель Files
+        obj = Files.objects.create()
+        obj.file.save('orders_report.xlsx', ContentFile(content_file.getvalue()), save=True)
+
+        return obj

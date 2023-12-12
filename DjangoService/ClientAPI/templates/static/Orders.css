@@ -1,0 +1,490 @@
+body{
+    background-color: #6A6F4C;
+    overflow-x: hidden;
+}
+
+header{
+    position: relative;
+    background-color: rgb(237, 225, 209);
+    width: 1920px;
+    height: 100px;
+    top: -8;
+    left: -8;
+    font-family: 'Vetrino',cursive;
+}
+
+.f2{
+    position: relative;
+    left: 25px;
+    top: 45px;
+    font-family: 'Vetrino',cursive;
+}
+header{
+    top: -27px;
+    font-family: 'Vetrino',cursive;
+}
+nav {
+    margin: 27px auto 0;
+    position: relative;
+    width: 400px;
+    height: 50px;
+    background-color:  rgb(93, 36, 16);
+    border-radius: 8px;
+    font-size: 0;
+    top: -20px;
+    left: -95px;
+    font-family: 'Vetrino',cursive;
+  }
+  nav a {
+    line-height: 50px;
+    height: 100%;
+    font-size: 15px;
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    font-family: 'Vetrino',cursive;
+  }
+  nav .animation {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    z-index: 0;
+    transition: all .5s ease 0s;
+    border-radius: 8px;
+  }
+  a:nth-child(1) {
+    width: 100px;
+  }
+  a:nth-child(2) {
+    width: 100px;
+  }
+  a:nth-child(3) {
+    width: 100px;
+  }
+  a:nth-child(4) {
+    width: 100px;
+  }
+  a:nth-child(5) {
+    width: 100px;
+  }
+  nav .start-home, a:nth-child(1):hover~.animation {
+    width: 100px;
+    left: 0;
+    background-color: #1abc9c;
+  }
+  nav .start-about, a:nth-child(2):hover~.animation {
+    width: 100px;
+    left: 100px;
+    background-color: #e74c3c;
+  }
+  nav .start-blog, a:nth-child(3):hover~.animation {
+    width: 80px;
+    left: 210px;
+    background-color: #3498db;
+  }
+  nav .start-portefolio, a:nth-child(4):hover~.animation {
+    width: 90px;
+    left: 310px;
+    background-color: #9b59b6;
+  }
+  nav .start-contact, a:nth-child(5):hover~.animation {
+    width: 100px;
+    left: 400px;
+    background-color: #e67e22;
+  }
+
+  h1 {
+    text-align: left;
+    margin: 1px 0 1px;
+    text-align: left;
+    font-size: 30px;
+    color: #ecf0f1;
+    text-shadow: 2px 2px 4px #000000;
+    font-family: 'Vetrino',cursive;
+}
+  }
+
+  p {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      color: #ecf0f1;
+      font-family: 'Vetrino',cursive;
+      font-size: 16px;
+  }
+
+
+.btn {
+	display: inline-block;
+	box-sizing: border-box;
+	padding: 0 6px;
+	margin: 0 12px 8px 0;
+	outline: none;
+	border: 1px solid #a4afba;
+	font-family: 'Vetrino',cursive;
+body{
+    background-color: #6A6F4C;
+    overflow-x: hidden;
+}
+
+header{
+    position: relative;
+    background-color: #EDE;
+    width: 1920px;
+    height: 100px;
+    top: -8;
+    left: -8;
+    font-family: 'Vetrino',cursive;
+}
+
+.f2{
+    position: relative;
+    left: 25px;
+    top: 45px;
+    font-family: 'Vetrino',cursive;
+}
+header{
+    top: -27px;
+    font-family: 'Vetrino',cursive;
+}
+nav {
+    margin: 27px auto 0;
+    position: relative;
+    width: 520px;
+    height: 50px;
+    background-color: #806044;
+    border-radius: 8px;
+    font-size: 0;
+    top: -20px;
+    left: -95px;
+    font-family: 'Vetrino',cursive;
+  }
+  nav a {
+    line-height: 50px;
+    height: 100%;
+    font-size: 15px;
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    font-family: 'Vetrino',cursive;
+  }
+  nav .animation {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    width:520px;
+    z-index: 0;
+    transition: all .5s ease 0s;
+    border-radius: 8px;
+  }
+  a:nth-child(1) {
+    width: 100px;
+  }
+  a:nth-child(2) {
+    width: 100px;
+    left:2px;
+  }
+  a:nth-child(3) {
+    width: 100px;
+    left:10px;
+  }
+  a:nth-child(4) {
+    width: 100px;
+  }
+  a:nth-child(5) {
+    width: 100px;
+  }
+  nav .start-home, a:nth-child(1):hover~.animation {
+    width: 100px;
+    left: 0;
+    background-color: #1abc9c;
+  }
+  nav .start-about, a:nth-child(2):hover~.animation {
+    width: 103px;
+    left: 100px;
+    background-color: #e74c3c;
+  }
+  nav .start-blog, a:nth-child(3):hover~.animation {
+    width: 100px;
+    left: 210px;
+    background-color: #3498db;
+  }
+  nav .start-portefolio, a:nth-child(4):hover~.animation {
+    width: 100px;
+    left: 310px;
+    background-color: #9b59b6;
+  }
+  nav .start-contact, a:nth-child(5):hover~.animation {
+    width: 120px;
+    left: 400px;
+    background-color: #e67e22;
+  }
+
+  h1 {
+    text-align: left;
+    margin: 1px 0 1px;
+    text-align: left;
+    font-size: 30px;
+    color: #ecf0f1;
+    text-shadow: 2px 2px 4px #000000;
+   font-family: 'Vetrino',cursive;
+}
+  }
+
+.btn {
+	display: inline-block;
+	box-sizing: border-box;
+	padding: 0 6px;
+	margin: 0 12px 8px 0;
+	outline: none;
+	border: 1px solid #a4afba;
+	border-radius: 3px;
+	height: 32px;
+	line-height: 32px;
+	font-size: 14px;
+	font-weight: 500;
+	text-decoration: none;
+	cursor: pointer;
+	user-select: none;
+	appearance: none;
+	touch-action: manipulation;
+	font-family: 'Vetrino',cursive;
+}
+.btn:focus-visible {
+	box-shadow: 0 0 0 3px lightskyblue;
+}
+.btn:hover {
+	border-color: #65a3be;
+	color: #4e879c;
+}
+.btn:active {
+	border-color: #78a2b7 !important;
+	color: #3a728b !important;
+}
+.btn:disabled {
+	background-color: #eee;
+	color: #444;
+	pointer-events: none;
+}
+
+/* Orders.css */
+
+
+
+/* Стили для информации о заказах */
+.orderBlock {
+    width: 200px;
+    height: 200px;
+    background-color:  rgb(93, 36, 16);
+    color: white;
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px;
+}
+
+.inProgressOrderBlock {
+    background-color: white;/* Зеленый цвет для заказов в работе */
+}
+
+.ordersInProgress {
+    float: left; /* Добавляет отображение слева */
+    margin-right: 20px; /* Добавляет отступ между блоками */
+}
+
+.readyOrders {
+    float: right; /* Добавляет отображение слева */
+    margin-right: 20px; /* Добавляет отступ между блоками */
+}
+
+.readyOrdersGrid {
+    display: flex; /* Используйте flexbox для контейнера */
+    justify-content: space-between; /* Равномерное распределение между элементами */
+
+}
+
+
+/* ... (ваш существующий CSS) */
+
+.ordersContainer {
+    overflow: auto; /* Добавляет прокрутку, если содержимое выходит за границы */
+}
+
+.ordersInProgress h3,
+.readyOrders h3 {
+    position: sticky; /* Делает заголовки прилипающими к верхней части контейнера */
+    top: 0;
+    font-size: 52px;
+    z-index: 1;
+    padding: 10px;
+    white-space: nowrap
+}
+
+.orderBlock {
+    /* ... (ваш существующий CSS для .orderBlock) */
+    width: 100%; /* Занимает всю ширину контейнера */
+    box-sizing: border-box;
+}
+
+.inProgressOrderBlock,
+.readyOrderBlock {
+    /* ... (ваш существующий CSS для .inProgressOrderBlock и .readyOrderBlock) */
+    width: 100%; /* Занимает всю ширину контейнера */
+    background-color:  rgb(93, 36, 16);
+}
+
+.readyOrdersGrid {
+    display: flex;
+    flex-wrap: wrap; /* Разрешает элементам переноситься на новую строку, если не помещаются */
+    justify-content: space-between;
+    font-family: 'Vetrino',cursive;
+    height:50%;
+}
+
+/* ... (ваш существующий CSS) */
+.main-order{
+position:relative;
+font-size:64px;
+left:700px;
+color:white;
+font-family: 'Vetrino',cursive;
+}
+
+.inProgressOrderBlock {
+    background-color: white;
+    width:220px;
+    font-family: 'Vetrino',cursive;
+    border-radiusz:0px;
+    height:10%;
+    top:100%;
+}
+
+
+
+.ordersInProgress {
+    top:50%;
+    float: left;
+    margin-right: 10px;
+    width: 240px; /* Увеличиваем ширину контейнера блоков "в работе" */
+    font-family: 'Vetrino',cursive;
+    border-radiusz:0px;
+    top:50%;
+}
+
+.readyOrders {
+    float: right;
+    margin-right: 20px;
+    padding: 10px;
+    width: 240px; /* Увеличиваем ширину контейнера готовых заказов */
+    font-family: 'Vetrino',cursive;
+
+
+}
+
+.readyOrders h3 {
+    color: black; /* Устанавливаем цвет текста для заголовка в контейнере готовых заказов */
+    font-size: 21px;
+    font-family: 'Vetrino',cursive;
+}
+
+.ordersInProgressGrid .orderBlock {
+    width: auto;
+    border-radius:0px;
+    height:50%;
+    top:90%;
+}
+
+
+.readyOrders h3 {
+    color: white;
+    position:relative;/* Устанавливаем цвет текста для заголовка в контейнере готовых заказов */
+    font-size: 52px;
+    left:25px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    font-family: 'Vetrino',cursive;
+}
+
+
+
+.inProgressOrderBlock p {
+    color: black;
+    font-size: 92px;
+    left: -2px;
+    top: -92px; /* Измените это значение в соответствии с вашими потребностями */
+    font-family: 'Vetrino', cursive;
+    position: relative; /* Или position: absolute; в зависимости от ваших нужд */
+    border-radius: 0px;
+    overflow-x: hidden;
+}
+
+.inProgressOrderBlock{
+    overflow-y: hidden;
+    width:200px;
+    top:90%;
+    height:13%;
+    text-align: center;
+    display:inline-block;
+    overflow-x: hidden;
+}
+@font-face {
+  // название шрифта(чтобы не запутаться лучше указать название папки со шрифтом)
+  font-family: "VETRINO";
+  // адрес шрифта и тип
+  src: url("./fonts/125. VETRINO.OTF") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+.ordersContainer{
+position:relative;
+top:-26%;
+}
+
+.readyOrdersGrid .orderBlock{
+    width: 85%;
+    border-radius:12px;
+    height:20%;
+    top:60%;
+}
+
+.readyOrdersGrid p {
+    color: white;
+    font-size: 92px;
+    left: -2px;
+    top: -92px; /* Измените это значение в соответствии с вашими потребностями */
+    font-family: 'Vetrino', cursive;
+    position: relative; /* Или position: absolute; в зависимости от ваших нужд */
+
+}
+
+.readyOrdersGrid{
+ overflow-y: hidden; /* Размер правых редачить тут*/
+    width:250px;
+    top:100%;
+    text-align: center;
+    display:inline-block;
+    height:60%;
+}
+
+.orderBlock readyOrderBlock{
+ overflow-y: hidden;
+    width:200px;
+    top:100%;
+    text-align: center;
+    display:inline-block;
+     height:50%;
+}

@@ -1,0 +1,99 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Заказы</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'Orders.css' %}">
+    <link rel="shortcut icon" href="#" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <header>
+        <h2 class="f2">Winter Restaurant 2023</h2>
+        <nav>
+            <a href="/waiter">Прием</a>
+            <a href="/kitchen">Кухня</a>
+            <a href="/order">Заказы</a>
+            <a href="analitic">Смета</a>
+            <div class="animation start-home"></div>
+        </nav>
+    </header>
+    <h2 class="main-order">Winter Cafe</h2>
+    <div class="ordersContainer">
+        <div class="ordersInProgress">
+            <h3 style="color:white;">В работе</h3>
+            <div id="ordersInProgressGrid">
+                <!-- Dynamic content will be added here -->
+            </div>
+            <div id="ordersLeft" class="ordersLeftGrid"></div>
+        </div>
+        <div class="readyOrders" style=" position:reliative; top:-50px;">
+            <h3>Готов</h3>
+            <div id="readyOrdersGrid" class="readyOrdersGrid" style="top:150px;">
+                <!-- Dynamic content will be added here -->
+            </div>
+        </div>
+    </div>
+    <script>
+$(document).ready(function () {
+    function fetchData() {
+        $.ajax({
+            url: '/data_order',
+            type: 'GET',
+            success: function (data) {
+                updateOrders(data);
+            },
+            error: function (error) {
+                console.error('Error fetching data:', error);
+            }
+        });
+    }
+
+    function updateOrders(data) {
+        console.log(data);
+
+        if (data && data.data && Array.isArray(data.data)) {
+            $('#ordersInProgressGrid').html('');
+            $('#readyOrdersGrid').html('');
+
+            // Count the number of <p> tags in the "In Progress" container
+            var inProgressOrdersCount = $('#ordersInProgressGrid p').length;
+
+            // Add a new container for orders "In Progress"
+            $('#ordersLeft').html('');
+
+            data.data.forEach(function (order) {
+                var isWorking = order.is_working;
+                var isReady = order.is_ready;
+                var isDeleted = order.is_deleted;
+
+                if (!isDeleted && (isWorking || isReady)) {
+                    var orderHtml = '<div class="orderBlock';
+                    orderHtml += isReady ? ' readyOrderBlock' : ' inProgressOrderBlock';
+                    orderHtml += '">';
+                    orderHtml += '<p>' + order.order_id + '</p>';
+                    orderHtml += '</div>';
+
+                    if (isReady) {
+                        $('#readyOrdersGrid').append(orderHtml);
+                    } else {
+                        // Distribute "In Progress" orders based on the count of <p> tags
+                        if (inProgressOrdersCount < 5) {
+                            $('#ordersInProgressGrid').append(orderHtml);
+                            inProgressOrdersCount++;
+                        } else {
+                            $('#ordersLeft').append(orderHtml);
+                        }
+                    }
+                }
+            });
+        } else {
+            console.error('Invalid data format:', data);
+        }
+    }
+
+    setInterval(fetchData, 1000);
+});
+
+</script>
+</body>
+

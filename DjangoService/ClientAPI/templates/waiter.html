@@ -1,24 +1,49 @@
 <head>
     <meta charset="UTF-8">
-    <title>Офицанты</title>
+    <title>Прием</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'main.css' %}">
+    {% load custom_filters %}
+    <link rel="stylesheet" href="{% static 'waiter.css' %}">
+    <link rel="shortcut icon" href="#" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
     <header>
         <h2 class="f2">Winter Restaurant 2023</h2>
-    <nav>
-        <a href="/">Главная</a>
-        <a href="waiter">Офицанты</a>
-        <a href="kitchen">Кухня</a>
-        <a href="orders">Заказы</a>
-        <a href="exportdata">Смета</a>
-        <div class="animation start-home"></div>
-      </nav>
+        <nav>
+            <a href="waiter">Прием</a>
+            <a href="kitchen">Кухня</a>
+            <a href="order">Заказы</a>
+            <a href="analitic">Смета</a>
+            <div class="animation start-home"></div>
+        </nav>
     </header>
-      <select class="custom-select">
-          <option>Choose something...</option>
-          <option>Lachs-Carpaccio</option>
-          <option>Pizza</option>
-        </select>
+    <!-- checkbox button -->
+   <!-- Update the section where you display goods -->
+<div class="goodss">
+    {% for category_id, category_name in categories.items %}
+        <h1>{{ category_name }}:</h1><br>
+        {% for good in categorized_goods|get_item:category_id %}
+            <label>
+                <button type="button" class="btn" value="{{ good.title }}" data-price="{{ good.price }}">
+                    {{ good.title }} - {{ good.price }} руб
+                </button>
+            </label>
+            {% if forloop.counter|divisibleby:3 %}<br>{% endif %}
+        {% endfor %}
+    {% endfor %}
+</div>
+
+<div class="result-container">
+        <div id="result" class="res" style="background-color: white; padding: 20px;" ></div>
+        <button type="button" id="clearValues" class="clearValuess">Очистить</button>
+        <button type="button" id="submitValues">Создать заказ</button>
+        <div id="totalAmount" class="total">Общая сумма: 0.00 руб</div>
+    </div>
+    <div class="container">
+  <button id="button"></button>
+</div>
+    <div id="orderCreated"></div>
+    <script src="{% static 'script.js' %}"></script>
 </body>

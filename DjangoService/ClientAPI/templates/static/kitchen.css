@@ -1,0 +1,362 @@
+body {
+    background-color: #6A6F4C;
+    overflow-x: hidden;
+}
+header{
+    position: relative;
+    background-color: rgb(237, 225, 209);
+    width: 1950px;
+    height: 100px;
+    top: -8;
+    left: -8;
+    font-family: 'Vetrino',cursive;
+}
+
+.f2{
+    position: relative;
+    left: 25px;
+    top: 45px;
+}
+header{
+    top: -27px;
+}
+
+nav {
+    margin: 27px auto 0;
+    position: relative;
+    width: 400px;
+    height: 50px;
+    background-color: rgb(93, 36, 16);
+    border-radius: 8px;
+    font-size: 0;
+    top: -20px;
+    left: -95px;
+    font-family: 'Vetrino',cursive;
+  }
+  nav a {
+    line-height: 50px;
+    height: 100%;
+    font-size: 15px;
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    font-family: 'Vetrino',cursive;
+  }
+  nav .animation {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    z-index: 0;
+    transition: all .5s ease 0s;
+    border-radius: 8px;
+  }
+  a:nth-child(1) {
+    width: 100px;
+  }
+  a:nth-child(2) {
+    width: 100px;
+  }
+  a:nth-child(3) {
+    width: 100px;
+  }
+  a:nth-child(4) {
+    width: 100px;
+  }
+  a:nth-child(5) {
+    width: 100px;
+  }
+  nav .start-home, a:nth-child(1):hover~.animation {
+    width: 100px;
+    left: 0;
+    background-color: #6A6F4C;
+  }
+  nav .start-about, a:nth-child(2):hover~.animation {
+    width: 100px;
+    left: 100px;
+    background-color: #e74c3c;
+  }
+  nav .start-blog, a:nth-child(3):hover~.animation {
+    width: 80px;
+    left: 210px;
+    background-color: #3498db;
+  }
+  nav .start-portefolio, a:nth-child(4):hover~.animation {
+    width: 90px;
+    left: 310px;
+    background-color: #9b59b6;
+  }
+  nav .start-contact, a:nth-child(5):hover~.animation {
+    width: 100px;
+    left: 400px;
+    background-color: #e67e22;
+  }
+h1 {
+    text-align: left;
+    margin: 1px 0 1px;
+    font-size: 30px;
+    color: #ecf0f1;
+    text-shadow: 2px 2px 4px #000000;
+    font-family: 'Vetrino',cursive;
+}
+.btn {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0 6px;
+    margin: 8px 0 0 12px; /* Adjusted margin for better spacing */
+    outline: none;
+    border: 1px solid #a4afba;
+    border-radius: 3px;
+    height: 32px;
+    line-height: 32px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+    appearance: none;
+    touch-action: manipulation;
+    font-family: 'Vetrino',cursive;
+}
+
+.btn:focus-visible {
+    box-shadow: 0 0 0 3px lightskyblue;
+}
+
+.btn:hover {
+    border-color: #65a3be;
+    color: #4e879c;
+}
+
+.btn:active {
+    border-color: #78a2b7 !important;
+    color: #3a728b !important;
+}
+
+.btn:disabled {
+    background-color: #eee;
+    color: #444;
+    pointer-events: none;
+}
+
+.allOrders {
+    text-align: center;
+}
+
+.allOrders h3 {
+    font-size: 24px;
+    color:white;
+}
+
+.orderBlock {
+    width: 200px;
+    height: 200px; /* Increased height for better text placement */
+    margin: 10px;
+    padding: 10px;
+    background-color: #806044;
+    border-radius: 12px;
+    position: relative;
+    text-align: center; /* Center text horizontally */
+}
+p{
+color:white;
+font-family: 'Vetrino',cursive;
+}
+.btnReady {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* ... (your existing CSS) */
+.allOrders {
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.orderBlock {
+    width: 200px;
+    height: 200px; /* Increased height for better text placement */
+    margin: 10px;
+    padding: 10px;
+    background-color: #806044;
+    border-radius: 12px;
+    position: relative;
+    text-align: center; /* Center text horizontally */
+}
+
+.allOrders {
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ordersContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+p {
+    color: white;
+    font-family: 'Vetrino',cursive;
+}
+
+.btnReady {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Vetrino',cursive;
+}
+
+
+
+.ordersContainer {
+    text-align: left; /* Align text to the left within the container */
+    top:-650px;
+
+}
+
+.orderBlock {
+    width: 300px;
+    height: 300px; /* Increased height for better text placement */
+    top:10px;
+    background-color: rgb(93, 36, 16);
+}
+
+p {
+    color: white;
+    display: inline-block;
+    top:60%;
+    font-family: 'Vetrino',cursive;
+}
+
+.btnReady {
+    position: absolute;
+    bottom: 70px;
+    height:35px;
+    width:35%;
+    left: 30%;
+    top:80%;
+    background-color: #6A6F4C;
+    border-radius: 8px;
+    border-color: #6A6F4C;
+    transform: translateX(-50%);
+    display: inline-block;
+    font-family: 'Vetrino',cursive;
+}
+.btnDelivered{
+position: absolute;
+    bottom: 70px;
+    height:35px;
+    width:35%;
+    left: 70%;
+    top:80%;
+    border-radius:8px;
+    border-color:red;
+    background-color: red;
+    transform: translateX(-50%);
+    display: inline-block;
+    font-family: 'Vetrino',cursive;
+}
+.main-order{
+position:relative;
+font-size:32px;
+left:880px;
+top:150px;
+color:white;
+}
+
+
+@media only screen and (max-width: 650px) {
+    .ordersContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.order_id{
+font-size:42px;
+
+}
+
+.good{
+font-size:12px;
+top:auto;
+}
+
+.summ{
+    position:relative;
+    font-size:24px;
+    top:auto;
+}
+
+@font-face {
+  // название шрифта(чтобы не запутаться лучше указать название папки со шрифтом)
+  font-family: "VETRINO";
+  // адрес шрифта и тип
+  src: url("./fonts/125. VETRINO.OTF") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+ .orderBlock {
+    width: 300px;
+    min-height: 320px; /* Минимальная высота блока, чтобы не сжимался слишком сильно */
+    margin: 10px;
+    padding: 10px;
+    background-color: rgb(93, 36, 16);
+    border-radius: 12px;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .orderBlock.autoHeight {
+    height: auto; /* Автоматическая высота для блока с длинным текстом */
+  }
+
+.orderBlock {
+    width: 300px;
+    min-height: 400px;
+    margin: 10px;
+    padding: 10px;
+    background-color: rgb(93, 36, 16);
+    border-radius: 12px;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    transition: height 0.5s;
+    display: flex;
+    flex-direction: column;
+}
+
+.orderBlock.autoHeight {
+    height: auto;
+}
+
+.orderBlock .orderTextContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.orderBlock p {
+    flex: 1;
+    margin: 0;
+}
+
+.orderBlock .btnReady,
+.orderBlock .btnDelivered {
+    align-self: flex-end;
+    margin-top: 10px; /* Расстояние между кнопкой и текстом */
+}

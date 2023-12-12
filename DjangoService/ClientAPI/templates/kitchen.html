@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кухня</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'kitchen.css' %}">
+    <link rel="shortcut icon" href="#" />
+
+    <style>
+        .orderBlock {
+            width: 300px;
+            min-height: 400px;
+            margin: 10px;
+            padding: 10px;
+            background-color: rgb(93, 36, 16);
+            border-radius: 12px;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+            transition: height 0.5s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .orderBlock.autoHeight {
+            height: auto;
+        }
+
+        .orderBlock .orderTextContainer {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .orderBlock p {
+            flex: 1;
+            margin: 0;
+        }
+
+        .orderBlock .btnReady,
+        .orderBlock .btnDelivered {
+            align-self: flex-end;
+            margin-top: 10px;
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <header>
+        <h2 class="f2">Winter Restaurant 2023</h2>
+        <nav>
+            <a href="waiter">Прием</a>
+            <a href="kitchen">Кухня</a>
+            <a href="order">Заказы</a>
+            <a href="analitic">Смета</a>
+            <div class="animation start-home"></div>
+        </nav>
+    </header>
+    <div class="ordersContainer">
+        <div class="allOrders">
+            <div id="allOrdersGrid">
+                <!-- Dynamic content will be added here -->
+                <div class="orderBlock">
+                    <div class="orderTextContainer">
+                        <p class="order_id">1</p>
+                        <p class="good">Текст заказа</p>
+                        <p class="summ">Итог: 1000 руб</p>
+                    </div>
+                    <button class="btnReady" data-orderid="1">Готово</button>
+                    <button class="btnDelivered" data-orderid="1">Выдано</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            function checkOverflow() {
+                $('.orderBlock').each(function () {
+                    var $this = $(this);
+
+                    // Check if any child element overflows
+                    if ($this.find('.orderTextContainer')[0].scrollHeight > $this.innerHeight()) {
+                        $this.addClass('autoHeight');
+                    } else {
+                        $this.removeClass('autoHeight');
+                    }
+                });
+            }
+
+            checkOverflow();
+
+               // Обработчик кнопок "Готово" и "Выдано"
+            $(document).on('click', '.btnReady, .btnDelivered', function () {
+                var orderId = $(this).data('orderid');
+                var actionType = $(this).hasClass('btnReady') ? 'ready' : 'delivered';
+
+                // Вызов функции обработки на сервере с orderId и actionType в теле запроса
+                $.ajax({
+                    url: 'order_update',
+                    type: 'POST',
+                    contentType: 'application/json', // Set content type to JSON
+                    data: JSON.stringify({ OrderID: orderId, ActionType: actionType }), // Convert data to JSON string
+                    success: function (response) {
+                        // Обновление данных после успешного обновления на сервере
+                        fetchData();
+                    },
+                    error: function (error) {
+                        console.error('Error marking order as ready or delivered:', error);
+                    }
+                });
+            });
+
+            setInterval(function () {
+                $.ajax({
+                    url: '/data_order',
+                    type: 'GET',
+                    success: function (data) {
+                        updateOrders(data);
+                        checkOverflow();
+                    },
+                    error: function (error) {
+                        console.error('Error fetching data:', error);
+                    }
+                });
+            }, 1000);
+
+            function updateOrders(data) {
+                if (data && data.data && Array.isArray(data.data)) {
+                    $('#allOrdersGrid').html('');
+
+                    data.data.forEach(function (order) {
+                        var isWorking = order.is_working;
+                        var isReady = order.is_ready;
+                        var isDeleted = order.is_deleted;
+
+                        if (!isDeleted) {
+                            var orderHtml = '<div class="orderBlock';
+                            orderHtml += isReady ? ' readyOrderBlock' : (isWorking ? ' inProgressOrderBlock' : '');
+                            orderHtml += '">';
+                            orderHtml += '<div class="orderTextContainer">';
+                            orderHtml += '<p class="order_id">' + order.order_id + '</p>';
+                            orderHtml += '<p class="good">' + order.goods + '</p><br>';
+                            orderHtml += '<p class="summ">Итог: ' + order.sum_price + ' руб</p>';
+                            orderHtml += '</div>';
+                            orderHtml += '<button class="btnReady" data-orderid="' + order.order_id + '">Готово</button>';
+                            orderHtml += '<button class="btnDelivered" data-orderid="' + order.order_id + '">Выдано</button>';
+                            orderHtml += '</div>';
+
+                            $('#allOrdersGrid').append(orderHtml);
+                        }
+                    });
+                } else {
+                    console.error('Invalid data format:', data);
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
