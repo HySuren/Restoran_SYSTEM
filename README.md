@@ -4,7 +4,26 @@
 \
 Убедительная просьба не взаимодействовать там с системой так как она действительно используется и есть так же сбор статистики по заказам за смену, да бы мне не приходилось после отчитыватся ;)
 ***
-
+## Stack
+\
+### Backend
+    Python
+    Django
+    openpyxl
+    psycopg2
+### Frontend
+    HTML
+    CSS
+    SCSS
+    JS
+    Ajax
+    JQuery
+### Web-server
+    Nginx
+### WSGI-server
+    gunicorn
+    
+***
 ## Repository content
     
 - ./requirements.txt - a set of modules required for the application
