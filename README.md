@@ -82,11 +82,11 @@ class WaiterResponseView(WaiterChangeViews):
         var dataToSend = {
             values: previousValues,
             totalAmount: totalAmount
-        }; // данные для отправки
+        };
 
         $.ajax({
             type: "POST",
-            url: "create_order", // Замените на свой URL
+            url: "create_order",
             data: JSON.stringify(dataToSend), // отправляем данные в формате JSON
             contentType: "application/json; charset=utf-8",
             dataType: "json",
