@@ -20,8 +20,9 @@
 ### Web-server
     Nginx
 ### WSGI-server
-    gunicorn
-    
+    Gunicorn
+### Data Base
+    PostgreSQL
 ***
 ## Repository content
     
@@ -150,7 +151,30 @@ class OrderCreateView(View):
             return JsonResponse({'status': 'error'})
 ```
 
-#### POST-request to send message to another copy of application
-    <host_ipv4>/api/v1/send
-
+#### GET-request to all orders
+    127.0.0.1:8000/data_order
+#### Send request
+    ```$(document).ready(function () {
+    function fetchData() {
+        $.ajax({
+            url: '/data_order',
+            type: 'GET',
+            success: function (data) {
+                updateOrders(data);
+            },
+            error: function (error) {
+                console.error('Error fetching data:', error);
+            }
+        });
+    }
+    ...
+    ```
+#### Processing on the server
+    ```python
+    class OrderChangeView(View):
+    def get(self, request) -> JsonResponse:
+        orders = Order.objects.all()
+        data = list(orders.values())  # Convert QuerySet to list of dictionaries
+        return JsonResponse({'data': data}, safe=False)
+        ```
 ### POST-request format
