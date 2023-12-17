@@ -117,7 +117,7 @@ class WaiterResponseView(WaiterChangeViews):
                 if (data.status === 'success') {
                     console.log("Данные успешно отправлены:", data);
 ```
-#### Processing on the server
+##### Processing on the server
 
 ```python
 class OrderCreateView(View):
