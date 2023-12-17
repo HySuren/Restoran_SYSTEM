@@ -70,7 +70,7 @@ class WaiterResponseView(WaiterChangeViews):
 
 #### POST-request to create new order
     127.0.0.1:8000/create_order
-```json
+```
 {
             values: previousValues < str >,
             totalAmount: totalAmount < float >
