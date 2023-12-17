@@ -99,7 +99,7 @@ class WaiterResponseView(WaiterChangeViews):
             totalAmount: totalAmount < float >
         }
 ```
-#### Send request
+##### Send request
 ```
         $('#submitValues').click(function(){
         var dataToSend = {
@@ -153,7 +153,7 @@ class OrderCreateView(View):
 
 #### GET-request to all orders
     127.0.0.1:8000/data_order
-#### Send request
+##### Send request
 ```
     $(document).ready(function () {
     function fetchData() {
@@ -170,7 +170,7 @@ class OrderCreateView(View):
     }
     ...
 ```
-#### Processing on the server
+##### Processing on the server
 ```python
     class OrderChangeView(View):
     def get(self, request) -> JsonResponse:
