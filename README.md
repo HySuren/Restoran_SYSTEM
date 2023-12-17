@@ -76,7 +76,8 @@ class WaiterResponseView(WaiterChangeViews):
         }
 ```
 #### Send request
-``` $('#submitValues').click(function(){
+```js
+$('#submitValues').click(function(){
         var dataToSend = {
             values: previousValues,
             totalAmount: totalAmount
@@ -93,7 +94,8 @@ class WaiterResponseView(WaiterChangeViews):
                     console.log("Данные успешно отправлены:", data);
 ```
 #### Processing on the server
-```class OrderCreateView(View):
+```python
+class OrderCreateView(View):
     """Handles creating new orders."""
     @csrf_exempt
     def create_order(request) -> JsonResponse:
