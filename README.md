@@ -70,14 +70,15 @@ class WaiterResponseView(WaiterChangeViews):
 
 #### POST-request to create new order
     127.0.0.1:8000/create_order
-```{
+```json
+{
             values: previousValues < str >,
             totalAmount: totalAmount < float >
         }
 ```
 #### Send request
-```js
-$('#submitValues').click(function(){
+```
+        $('#submitValues').click(function(){
         var dataToSend = {
             values: previousValues,
             totalAmount: totalAmount
@@ -94,6 +95,7 @@ $('#submitValues').click(function(){
                     console.log("Данные успешно отправлены:", data);
 ```
 #### Processing on the server
+
 ```python
 class OrderCreateView(View):
     """Handles creating new orders."""
