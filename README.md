@@ -68,8 +68,61 @@ class WaiterResponseView(WaiterChangeViews):
         return render(request, 'waiter.html', context)
 ```
 
-#### GET-request to get all sent messages
-    <host_ipv4>/api/v1/stat/sent
+#### POST-request to create new order
+    127.0.0.1:8000/create_order
+```{
+            values: previousValues < str >,
+            totalAmount: totalAmount < float >
+        }
+```
+#### Send request
+``` $('#submitValues').click(function(){
+        var dataToSend = {
+            values: previousValues,
+            totalAmount: totalAmount
+        }; // данные для отправки
+
+        $.ajax({
+            type: "POST",
+            url: "create_order", // Замените на свой URL
+            data: JSON.stringify(dataToSend), // отправляем данные в формате JSON
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(data){
+                if (data.status === 'success') {
+                    console.log("Данные успешно отправлены:", data);
+```
+#### Processing on the server
+```class OrderCreateView(View):
+    """Handles creating new orders."""
+    @csrf_exempt
+    def create_order(request) -> JsonResponse:
+        """Handles the HTTP POST request to create a new order."""
+        keys_list: List[str] = []
+        values_list: List[Any] = []
+        goods: str = ''
+        sum_price: float = 0
+
+        if request.method == 'POST':
+            updated_data = json.loads(request.body.decode('UTF-8'))
+            data = updated_data.get('values')
+            for item in data:
+                for key, value in item.items():
+                    keys_list.append(key)
+                    values_list.append(value)
+
+            for value in values_list[0::2]:
+                goods += f'{value}\n'
+
+            for price in values_list[1::2]:
+                sum_price += price
+
+            order = Order(goods=goods, sum_price=sum_price, is_working=True)
+            order.save()
+            return JsonResponse({'status': 'success', 'redirect': 'waiter'})
+        else:
+            return JsonResponse({'status': 'error'})
+```
 
 #### POST-request to send message to another copy of application
     <host_ipv4>/api/v1/send
