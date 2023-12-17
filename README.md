@@ -31,8 +31,8 @@
     python3 manage.py runserver 
 
 ### API endpoints
-#### GET-request to get waiter.html and waiter.css  <localhost = 127.0.0.1:8000>
-    localhost/waiter
+#### GET-request to get waiter.html and waiter.css
+    127.0.0.1:8000/waiter
 
 ```python
 class WaiterChangeViews(DataBaseExemplar):
@@ -56,7 +56,7 @@ class WaiterChangeViews(DataBaseExemplar):
             'categorized_goods': categorized_goods,
         }
 
-        return context
+        return context```
 
 #### GET-request to get all sent messages
     <host_ipv4>/api/v1/stat/sent
