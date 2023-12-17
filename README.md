@@ -56,7 +56,17 @@ class WaiterChangeViews(DataBaseExemplar):
             'categorized_goods': categorized_goods,
         }
 
-        return context```
+        return context
+
+class WaiterResponseView(WaiterChangeViews):
+    """Handles HTTP requests for the waiter interface."""
+    @staticmethod
+    def waiter_response(request) -> HttpResponse:
+        """Handles the HTTP GET request and renders the waiter interface."""
+        waiter_change_view = WaiterChangeViews()
+        context = waiter_change_view.get_context()
+        return render(request, 'waiter.html', context)
+```
 
 #### GET-request to get all sent messages
     <host_ipv4>/api/v1/stat/sent
