@@ -154,7 +154,8 @@ class OrderCreateView(View):
 #### GET-request to all orders
     127.0.0.1:8000/data_order
 #### Send request
-    ```$(document).ready(function () {
+```
+    $(document).ready(function () {
     function fetchData() {
         $.ajax({
             url: '/data_order',
@@ -168,13 +169,13 @@ class OrderCreateView(View):
         });
     }
     ...
-    ```
+```
 #### Processing on the server
-    ```python
+```python
     class OrderChangeView(View):
     def get(self, request) -> JsonResponse:
         orders = Order.objects.all()
         data = list(orders.values())  # Convert QuerySet to list of dictionaries
         return JsonResponse({'data': data}, safe=False)
-        ```
+```
 ### POST-request format
