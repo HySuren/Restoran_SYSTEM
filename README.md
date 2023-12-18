@@ -61,7 +61,7 @@ api.dev.youthcafe.ru Убедительная просьба не взаимод
     python3 manage.py migrate
 #### To run 
     python3 manage.py runserver 
-
+***
 ### API endpoints
 #### GET-request to get waiter.html and waiter.css
     127.0.0.1:8000/waiter
@@ -357,7 +357,7 @@ class Files(models.Model):
 
         return obj
 ```
-
+***
 ### Models
 ```python
 from typing import Text, List
