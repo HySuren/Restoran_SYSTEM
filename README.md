@@ -187,7 +187,7 @@ class OrderCreateView(View):
         data = list(orders.values())  # Convert QuerySet to list of dictionaries
         return JsonResponse({'data': data}, safe=False)
 ```
-### GET-request to get kithen.html and kithen.css
+#### GET-request to get kithen.html and kithen.css
     127.0.0.1:8000/kitchen
 ##### Processing on the server
 ```python
@@ -198,7 +198,7 @@ class KitchenResponceViews(View):
         context = {'data': data}
         return render(request, 'kitchen.html', context)
 ```
-### UPDATE-request to state Order
+#### UPDATE-request to state Order
     127.0.0.1:8000/order_update
 ##### Send request
 ```
@@ -259,7 +259,7 @@ class OrderStateUpdate(View):
         order.save()
         return JsonResponse({'status': '200'})
 ```
-### GET-request to get .xlsx file statistic all order
+#### GET-request to get .xlsx file statistic all order
 ##### Send request
 ```
 function isDownload() {
